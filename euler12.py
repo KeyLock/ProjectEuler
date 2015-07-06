@@ -1,3 +1,12 @@
+def countDivisors(n):
+    divisors = 0
+    i = 1
+    while i*i <= n:
+        if n % i == 0:
+            divisors += 2
+        i += 1
+    return divisors
+
 def factorList(n):
     factorList = []
     for i in range(1,n+1):
@@ -16,15 +25,17 @@ def createTriangularNumber(n):
 #print(createTriangularNumber(10))
 
 def find500():
-    n = 2015
+    n = 1
     t = createTriangularNumber(n)
-    f = factorList(t)
-    while len(f) < 500:
+    d = countDivisors(t)
+    while d < 500:
         n += 1
         t = createTriangularNumber(n)
-        f = factorList(t)
+        d = countDivisors(t)
 
-    print(n)
     return createTriangularNumber(n)
 
 print(find500())       
+
+#x = createTriangularNumber(2015)
+#countDivisors(x)
